@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/color/jquery.color-2.2.0.js" integrity="sha256-gvMJWDHjgDrVSiN6eBI9h7dRfQmsTTsGU/eTT8vpzNg=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/color/jquery.color.svg-names-2.2.0.js" integrity="sha256-oGkjooVZaxL14M7UTaEwci0DMShyIPMaR8wtfrcIANE=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/color/jquery.color.plus-names-2.2.0.js" integrity="sha256-B2NKhQ/4wyx0RUkvxp34OVk2/+J9zwZRpFyQIst5/XY=" crossorigin="anonymous"></script>
+	<title></title>
+</head>
+<body>
+	<div class="menu">
+		<div id="item">Drop-Down</div>
+		<div id="submenu">
+			<a href="#">Link 1</a>
+			<a href="#">Link 2</a>
+			<a href="#">Link 3</a>
+		</div>
+	</div>
+
+	<p class='toggle'>fnhfn uuu;u;u;ph j</p>
+	<h1>My To-Do List</h1>
+	<input type="text" placeholder="New Item">
+	<button id="add">Add</button>
+	<ol id="mylist"></ol>
+	<div>
+		<button>Do you like me..??</button>
+	</div>
+	<style>
+		.btn {
+			margin-top: 50px;
+			margin-left: 50px;
+			font-size: 48px;
+			font-weight: bold;
+			border: 2px solid skyblue;
+		}
+	</style>
+	<script>
+		$(function() {
+			$('#add').on('click', function() {
+				var val = $('input').val();
+				if (val !== '') {
+					var elem = $('<li></li>').text(val);
+					$(elem).append("<button class='rem'>X</button>")
+					$('#mylist').append(elem)
+					$('input').val('')
+					$(".rem").parent().on('click', function() {
+						$(this).remove()
+					})
+				}
+			});
+
+			$(".toggle").toggle(5000, function() {
+				$(this).show(5000, function() {
+					$(this).css({"font-size": 48, "background-color": "green"})
+					$(this).fadeToggle(5000, function() {
+						$(this).slideToggle(5000)
+					})
+				})
+			});
+
+			$("div button").addClass("btn")
+			$("div button").click(function() {
+				$(this).animate({
+					"width": "250px",
+					"height": "250px"
+				}, 5000)
+			});
+
+			$(".menu").addClass("btn")
+			$("#item").click(function() {
+				$("#submenu").slideToggle(500);
+			})
+		})
+	</script>
+
+</body>
+</html>
+
+<!-- 
+order_doctype, order, order_group, billing_item, company = frappe.get_value(
+    refd,
+    refn,
+    ["order_doctype", "order", "order_group", "billing_item", "company"],
+)
+if order_doctype in [
+    "Lab Test Template",
+    "Radiology Examination Template",
+    "Clinical Procedure Template",
+    "Therapy Plan Template",
+]:
+    comapny_option = get_template_company_option(order, company)
+    return comapny_option.service_unit
+
+elif order_doctype == "Medication":
+    if not order_group:
+        return
+    prescriptions = frappe.get_all(
+        "Drug Prescription",
+        filters={
+            "parent": order_group,
+            "parentfield": "drug_prescription",
+            "drug_code": billing_item,
+        },
+        fields=["name", "healthcare_service_unit"],
+    )
+    if len(prescriptions) > 0:
+        return prescriptions[0].healthcare_service_unit -->
+               
+
+
+
+<!-- https://clay.global/
+https://www.superside.com/blog/10-great-examples-of-animation-on-websites
+https://www.edufront.co.in/
+https://www.webloominc.com/projects -->
